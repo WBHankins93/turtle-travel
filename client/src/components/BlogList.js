@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import BlogPost from './BlogPost';
 import { Box } from '@mui/material';
+import axios from 'axios';
 
 const BlogList = ({ posts }) => {
+  const [postList, setPostList] = useState(posts);
+
+  useEffect(() => {
+    // Fetch posts from backend
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/api/posts');
+        setPostList(response.data);
+      } catch (error){
+        console.log('Error fetching posts:', error);
+      }
+    };
+
+    fetchPosts();
+  }, [posts]);
+
   return (
     <Box
       display="flex"
