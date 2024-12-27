@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography } from '@mui/material';
+import axios from 'axios';
 
 const BlogForm = ({ onSubmit, initialPost }) => {
     const [title, setTitle] = useState(initialPost?.title || '');
@@ -8,9 +9,15 @@ const BlogForm = ({ onSubmit, initialPost }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const newPost = { title, content };
-        onSubmit(newPost);
-        setTitle('');
-        setContent('');
+        
+        try {
+          const response = await axios.post('http://localhost:5000/api/posts', newPost);
+          onSubmit(newPost);
+          setTitle('');
+          setContent('');
+        } catch (error) {
+          console.log('Error creating post:', error;)
+        }
     };
 
     return (
