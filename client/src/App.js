@@ -1,23 +1,21 @@
-import './App.css';
+import React, { useState } from 'react';
+import BlogForm from './components/BlogForm';  // Correct import
+import BlogList from './components/BlogList';  // Correct import
 
-function App() {
+const App = () => {
+  const [posts, setPosts] = useState([]);
+
+  const handleCreateOrUpdatePost = (newPost) => {
+    setPosts((prevPosts) => [...prevPosts, newPost]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Travel Blog</h1>
+      <BlogForm onSubmit={handleCreateOrUpdatePost} />
+      <BlogList posts={posts} />
     </div>
   );
-}
+};
 
 export default App;
