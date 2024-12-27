@@ -1,13 +1,18 @@
-// src/components/BlogPost.js
-
 import React from 'react';
+import { Card, CardContent, Typography } from '@mui/material';
 
 const BlogPost = ({ post }) => {
   return (
-    <div>
-      <h2>{post.title}</h2>
-      <p>{post.content}</p>
-    </div>
+    <Card variant="outlined">
+      <CardContent>
+        <Typography variant="h6" gutterBottom>
+          {post.title}
+        </Typography>
+        <Typography variant="body1">
+          {post.content}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 };
 

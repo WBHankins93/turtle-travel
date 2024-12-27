@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { TextField, Button, Container, Typography } from '@mui/material';
 
 const BlogForm = ({ onSubmit, initialPost }) => {
     const [title, setTitle] = useState(initialPost?.title || '');
@@ -13,28 +14,34 @@ const BlogForm = ({ onSubmit, initialPost }) => {
     };
 
     return (
+    <Container maxWidth="sm">
+        <Typography variant="h4" gutterBottom>
+          {initialPost ? 'Edit Post' : 'Create New Post'}
+        </Typography>
         <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="content">Content</label>
-        <textarea
-          id="content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          required
-        />
-      </div>
-      <button type="submit">{initialPost ? 'Update Post' : 'Create Post'}</button>
-    </form>
+          <TextField
+            label="Title"
+            fullWidth
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+            margin="normal"
+          />
+          <TextField
+            label="Content"
+            fullWidth
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            required
+            multiline
+            rows={4}
+            margin="normal"
+          />
+          <Button variant="contained" color="primary" type="submit" fullWidth>
+            {initialPost ? 'Update Post' : 'Create Post'}
+          </Button>
+        </form>
+      </Container>
   );
 };
 

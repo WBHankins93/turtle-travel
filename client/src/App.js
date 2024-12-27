@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import BlogForm from './components/BlogForm';  // Correct import
-import BlogList from './components/BlogList';  // Correct import
+import BlogForm from './components/BlogForm';
+import BlogList from './components/BlogList';
+import { Container, Typography } from '@mui/material';
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -10,11 +11,13 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Travel Blog</h1>
+    <Container maxWidth="lg">
+      <Typography variant="h3" align="center" gutterBottom>
+        Travel Blog
+      </Typography>
       <BlogForm onSubmit={handleCreateOrUpdatePost} />
       <BlogList posts={posts} />
-    </div>
+    </Container>
   );
 };
 
