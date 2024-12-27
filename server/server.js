@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 // Routes
 app.use('api/posts', postRoutes);
 
-const port = 5000;
+const port = 5001;
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`)
 })
