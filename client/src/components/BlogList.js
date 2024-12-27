@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import axios from 'axios';
 
 const BlogList = ({ posts }) => {
-  const [postList, setPostList] = useState(posts);
+  const [postList, setPostList] = useState([]);
 
   useEffect(() => {
     // Fetch posts from backend
@@ -28,8 +28,8 @@ const BlogList = ({ posts }) => {
       justifyContent="center"
       gap={3}  // Adds spacing between posts
     >
-      {posts.map((post, index) => (
-        <Box key={index} width={{ xs: '100%', sm: '48%', md: '30%' }}>
+      {postList.map((post) => (
+        <Box key={post.id} width={{ xs: '100%', sm: '48%', md: '30%' }}>
           <BlogPost post={post} />
         </Box>
       ))}

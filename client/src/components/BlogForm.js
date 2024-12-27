@@ -11,8 +11,8 @@ const BlogForm = ({ onSubmit, initialPost }) => {
         const newPost = { title, content };
         
         try {
-          const response = await axios.post('http://localhost:5000/api/posts', newPost);
-          onSubmit(newPost);
+          const response = await axios.post('http://localhost:5001/api/posts', newPost);
+          onSubmit(response.data);
           setTitle('');
           setContent('');
         } catch (error) {

@@ -6,6 +6,7 @@ let posts = [];
 
 // Create new post (CREATE)
 router.post('/', (req,res) => {
+    console.log('Received POST request:', req.body);
     const { title, content } = req.body;
     const newPost = { title, content, id: Date.now() };
     posts.push(newPost);
@@ -26,7 +27,7 @@ router.put('/:id', (req,res) => {
 
     const postIndex = posts.findIndex(post => post.id == id);
     if (postIndex !== -1) {
-        post[postIndex] = {...post[postIndex, title, content]};
+        posts[postIndex] = {...posts[postIndex], title, content};
         res.status(200).json(posts[postIndex])
     } else {
         res.status(404).json({message: "Post not found"});
